@@ -1,6 +1,7 @@
 from PIL import Image
 
-async def resize_image(image: Image) -> Image:
+async def resize_image(path: str) -> Image:
+    image = Image.open(path)
     width, height = image.size
 
     if height > 480:
