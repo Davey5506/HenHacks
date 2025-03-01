@@ -12,3 +12,11 @@ async def resize_image(image: Image) -> Image:
     resized = image.resize((new_width, new_height))
     return resized
 
+async def adjust_contrast(image: Image) -> Image:
+    return image
+
+async def adjust_brightness(image: Image) -> Image:
+    return image
+
+async def adjust_saturation(image: Image) -> Image:
+    return image
