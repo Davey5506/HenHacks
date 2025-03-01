@@ -2,7 +2,6 @@ from google import genai
 from google.genai import Client
 from PIL import Image
 import preprocessor
-import asyncio
 import dotenv
 
 
