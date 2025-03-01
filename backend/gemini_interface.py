@@ -25,5 +25,5 @@ async def main() -> None:
         throw_error("Could not connect to gemini")
 
 
-
-asyncio.run(main())
+if __name__ == '__main__':
+    asyncio.run(main())
