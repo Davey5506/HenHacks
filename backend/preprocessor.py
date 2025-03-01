@@ -1,21 +1,16 @@
-import cv2
-import asyncio
 from PIL import Image
 
-async def resize_image(input, output):
-    image = Image.open(input)
-    width, height = image.size()
+async def resize_image(image):
+    image = Image.open(image)
+    width, height = image.size
 
-    newWidth = 0
-    newHeight = 0
     if height > 480:
-        newHeight = 480
-        newWidth = int(width * (newHeight/float(height)))
+        new_height = 480
+        new_width = int(width * (new_height/float(height)))
     else:
-        newWidth, newHeight = width, height
+        new_width, new_height = width, height
     
-    resized = image.resize((newWidth, newHeight), Image.LANCZOS)
-    resized.save(output)
-
+    resized = image.resize((new_width, new_height))
+    return resized
 
 
