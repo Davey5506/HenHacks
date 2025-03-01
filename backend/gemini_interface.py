@@ -1,9 +1,8 @@
 from google import genai
 from google.genai import Client
 from PIL import Image
-import preprocessor
 import dotenv
-
+import preprocessor
 
 async def interprit_image(client:Client, image:Image):
     response = client.models.generate_content(model="gemini-2.0-flash",
