@@ -16,16 +16,19 @@ async def resize_image(image: Image) -> Image:
     return resized
 
 async def adjust_contrast(image: Image) -> Image:
+    # Change the contrast of the image
     enhancer = ImageEnhance.Contrast(image)
     image = enhancer.enhance(1.5)
     return image
 
 async def adjust_brightness(image: Image) -> Image:
+    # Change the brightness of the image
     enhancer = ImageEnhance.Brightness(image)
     image = enhancer.enhance(1.5)
     return image
 
 async def adjust_saturation(image: Image) -> Image:
+    # Change the saturation of the image
     enhancer = ImageEnhance.Color(image)
     image = enhancer.enhance(1.5)
     return image
