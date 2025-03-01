@@ -1,7 +1,6 @@
 from PIL import Image
 
-async def resize_image(path: str) -> Image:
-    image = Image.open(path)
+async def resize_image(image: Image) -> Image:
     width, height = image.size
 
     if height > 480:
@@ -9,10 +8,7 @@ async def resize_image(path: str) -> Image:
         new_width = int(width * (new_height/float(height)))
     else:
         new_width, new_height = width, height
-
-    image = image.
     
     resized = image.resize((new_width, new_height))
     return resized
-
 

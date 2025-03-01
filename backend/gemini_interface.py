@@ -25,6 +25,7 @@ async def main(path:str) -> str:
         print("Could not connect to gemini")
         exit(-2)
 
-    image = await preprocessor.resize_image(path)
+    image = Image.open(path)
+    image = await preprocessor.resize_image(image)
     response = await interprit_image(client, image)
     return response
