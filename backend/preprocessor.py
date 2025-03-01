@@ -16,6 +16,7 @@ async def resize_image(image: Image) -> Image:
     return resized
 
 async def adjust_contrast(image: Image) -> Image:
+
     return image
 
 async def adjust_brightness(image: Image) -> Image:
