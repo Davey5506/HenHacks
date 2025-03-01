@@ -1,7 +1,6 @@
 from google import genai
-from google.genai import types
+import preprocessor
 import asyncio
-import cv2
 import dotenv
 
 
