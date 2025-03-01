@@ -1,10 +1,11 @@
 from google import genai
+from google.genai import Client
 import preprocessor
 import asyncio
 import dotenv
 
 
-async def interprit_image(client, image):
+async def interprit_image(client:Client, image):
     response = client.models.generate_content(model="gemini-2.0-flash",
                                               contents=[
                                                   "What medical conditions are evident in this image?",
@@ -28,7 +29,7 @@ async def main() -> None:
     while True:
         image = input("Enter the path to the image: ")
         image = await preprocessor.resize_image(image)
-        await interprit_image(client, image)
+        response = await interprit_image(client, image)
 
 if __name__ == '__main__':
     asyncio.run(main())
