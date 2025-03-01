@@ -9,6 +9,8 @@ async def resize_image(path: str) -> Image:
         new_width = int(width * (new_height/float(height)))
     else:
         new_width, new_height = width, height
+
+    image = image.
     
     resized = image.resize((new_width, new_height))
     return resized

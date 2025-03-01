@@ -10,7 +10,6 @@ async def interprit_image(client:Client, image:Image):
     response = client.models.generate_content(model="gemini-2.0-flash",
                                               contents=[
                                                   "What medical conditions are evident in this image?",
-                                                  {"mime-type": "image/png"},
                                                   image
                                               ])
     print(response.text)
