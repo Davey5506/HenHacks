@@ -3,7 +3,7 @@ from google.genai import types
 import asyncio
 import cv2
 import dotenv
-from numpy.f2py.auxfuncs import throw_error
+
 
 async def interprit_image(client, image):
     response = client.Models.generate_content(model="gemini-2.0-flash",
@@ -18,11 +18,13 @@ async def interprit_image(client, image):
 async def main() -> None:
     api_key = dotenv.dotenv_values(".env").get("API_KEY")
     if api_key is None:
-        throw_error("API_KEY not set")
+        print("API_KEY not set")
+        exit(-1)
 
     client = genai.Client(api_key=api_key)
     if client is None:
-        throw_error("Could not connect to gemini")
+        print("Could not connect to gemini")
+        exit(-2)
 
 
 if __name__ == '__main__':
