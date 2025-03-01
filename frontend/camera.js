@@ -1,13 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const video = document.getElementById("webcam");
     const captureButton = document.querySelector("button");
-    const container = document.getElementById("container");
     
-    // Create canvas element
+    // Create canvas element (not appended to the DOM)
     const canvas = document.createElement("canvas");
-    canvas.style.display = "none";
-    container.appendChild(canvas);
-    
     const context = canvas.getContext("2d");
     
     // Access the camera
@@ -19,17 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error accessing camera:", error);
         });
     
-    // Capture and download photo
+    // Capture photo
     captureButton.addEventListener("click", () => {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
+        context.clearRect(0, 0, canvas.width, canvas.height); // Clear previous image
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        
-        const image = canvas.toDataURL("image/png");
-        const link = document.createElement("a");
-        link.href = image;
-        link.download = "photo.png";
-        link.click();
     });
     
     // Apply styles for better alignment
@@ -37,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.textAlign = "center";
     document.body.style.margin = "50px";
     
+    const container = document.getElementById("container");
     container.style.height = "375px";
     container.style.width = "500px";
     container.style.backgroundColor = "#565656";
