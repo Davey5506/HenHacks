@@ -14,7 +14,6 @@ async def interprit_image(client:Client, image:Image):
     return response.text
 
 async def main(path:str) -> str:
-
     # Load the API key from the .env file
     api_key = dotenv.dotenv_values(".env").get("API_KEY")
     if api_key is None:
