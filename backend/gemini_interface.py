@@ -4,16 +4,16 @@ from PIL import Image
 import dotenv
 import preprocessor
 
-async def interprit_image(client:Client, image:Image):
+async def interprit_image(client:Client, image:Image, text:str) -> str:
     response = client.models.generate_content(model="gemini-2.0-flash",
                                               contents=[
-                                                  "What medical conditions are evident in this image?",
+                                                  "Based on the image you provided, and the following symptoms: " + text + ". Provide some potential conditions for discussion with a healthcare professional.",
                                                   image
                                               ])
     print(response.text)
     return response.text
 
-async def main(path:str) -> str:
+async def main(path:str, text: str) -> str:
     # Load the API key from the .env file
     api_key = dotenv.dotenv_values(".env").get("API_KEY")
     if api_key is None:
@@ -27,9 +27,9 @@ async def main(path:str) -> str:
         exit(-2)
 
     # Load the image and pre-process it
-    image = Image.open(path)
-    image = await preprocessor.resize_image(image)
+    image_data = path.split(',')[-1]
+    print(image_data)
 
     # Send the image to the Gemini API
-    response = await interprit_image(client, image)
+    response = await interprit_image(client, image_data, text)
     return response

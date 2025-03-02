@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const video = document.getElementById("webcam");
     const captureButton = document.querySelector("button");
-    
+    const wisdomOfGemini = document.getElementById("response");
     // Create canvas element (not appended to the DOM)
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
@@ -21,6 +21,24 @@ document.addEventListener("DOMContentLoaded", () => {
         canvas.height = video.videoHeight;
         context.clearRect(0, 0, canvas.width, canvas.height); // Clear previous image
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        const imagedata = canvas.toDataURL("image/png");
+        const textdata = userInput.value;
+        fetch('http://127.0.0.1:5000/process_image', {  // Flask server address
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ image: imagedata, text: textdata })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.result);
+            wisdomOfGemini.textContent = data.result;
+        })
+        .catch(error => {
+            wisdomOfGemini.textContent = 'Error sending image to backend:' + error.result;
+        });
     });
     
     // Apply styles for better alignment

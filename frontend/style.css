@@ -12,9 +12,9 @@ nav {
     color: white;
     display: flex;
     justify-content: center;
-    padding: 0 3.125rem;
+    padding: 10px;
     height: 10vh;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
