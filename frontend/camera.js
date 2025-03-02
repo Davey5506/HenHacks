@@ -21,25 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         canvas.height = video.videoHeight;
         context.clearRect(0, 0, canvas.width, canvas.height); // Clear previous image
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-        // Convert the image to base64
-        const imageData = canvas.toDataURL('image/jpeg');
-
-        // Send the image data to the backend
-        fetch('http://127.0.0.1:5000/process_image', {  // Flask server address
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ image: imageData })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Response from backend:', data);
-        })
-        .catch(error => {
-            console.error('Error sending image to backend:', error);
-        });
     });
     
     // Apply styles for better alignment
@@ -61,4 +42,18 @@ document.addEventListener("DOMContentLoaded", () => {
     captureButton.style.height = "50px";
     captureButton.style.textAlign = "center";
     captureButton.style.marginTop = "10px";
+});
+
+const userInput = document.getElementById('userInput');
+const takePhotoButton = document.querySelector('button'); // Select the button
+
+takePhotoButton.addEventListener('click', () => {
+    // Perform any other actions (e.g., take a photo)
+
+    // Reset the textbox
+    userInput.value = "";
+});
+
+userInput.addEventListener('input', () => {
+    console.log(userInput.value); // Log the input value to the console
 });
