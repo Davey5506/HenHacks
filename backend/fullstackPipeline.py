@@ -4,10 +4,6 @@ import gemini_interface
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
 @app.route('/process_image', methods=['POST'])
 async def process_image():
     try:
