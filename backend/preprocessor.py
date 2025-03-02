@@ -12,7 +12,6 @@ async def base64_to_img(base64_string: str) -> Image:
 
 
 async def resize_image(image: Image) -> Image:
-
     # Get the current size of the image
     width, height = image.size
 
