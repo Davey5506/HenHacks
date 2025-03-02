@@ -1,21 +1,78 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex; /* Make body a flex container */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: flex-start; /* keep nav at top */
+    align-items: center; /* Center children horizontally */
+}
 
-body {
-    display: inline-block;
-    text-align:center;
-    margin:50px;
-    
+nav {
+    background-color: rgb(186, 1, 1);
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 0 3.125rem;
+    height: 10vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+nav h1{
+    margin: 0;
+    line-height: 10vh;
+    transform: translateZ(0);
 }
 
 #container {
-    height:375px;
-    width:500px;
-    background-color:#565656;
+    height: 375px;
+    width: 500px;
+    background-color: #565656;
+    margin-top: 10vh; /* Add margin-top equal to nav height to avoid overlap */
+    margin-bottom: 20px;
 }
 
 button {
     background: rgb(11, 143, 243);
-    color:white;
-    width:200px;
-    height:50px;
+    color: white;
+    width: 200px;
+    height: 50px;
     text-align: center;
+    margin-top: 10px;
+}
+
+.webcam {
+    text-align: center;
+    margin-top: 10vh;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 300px; /* Adjust width as needed */
+    margin-top: 10px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add subtle shadow on focus */
+}
+
+#outputBox {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+    width: 80%;
+    min-height: 100px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    font-size: 16px;
+    word-wrap: break-word;
 }
