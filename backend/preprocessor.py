@@ -15,9 +15,9 @@ async def resize_image(image: Image) -> Image:
     # Get the current size of the image
     width, height = image.size
 
-    # Check if current size is larger than 480p resolution
-    if height > 480:
-        new_height = 480
+    # Check if current size is larger than 1080p resolution
+    if height > 1080:
+        new_height = 1080
         new_width = int(width * (new_height/float(height)))
     else:
         new_width, new_height = width, height
