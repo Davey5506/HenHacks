@@ -14,6 +14,7 @@ async def interprit_image(client:Client, image:Image):
     return response.text
 
 async def main(path:str) -> str:
+
     # Load the API key from the .env file
     api_key = dotenv.dotenv_values(".env").get("API_KEY")
     if api_key is None:
@@ -27,7 +28,7 @@ async def main(path:str) -> str:
         exit(-2)
 
     # Load the image and pre-process it
-    image = Image.open(path)
+    image = await preprocessor.base64_to_img(path)
     image = await preprocessor.resize_image(image)
 
     # Send the image to the Gemini API
