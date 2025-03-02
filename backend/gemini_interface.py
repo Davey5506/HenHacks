@@ -31,5 +31,5 @@ async def main(path:str, text: str) -> str:
     image = await preprocessor.resize_image(image)
 
     # Send the image to the Gemini API
-    response = await interprit_image(client, image_data, text)
+    response = await interprit_image(client, image, text)
     return response
