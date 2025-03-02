@@ -27,8 +27,8 @@ async def main(path:str, text: str) -> str:
         exit(-2)
 
     # Load the image and pre-process it
-    image_data = path.split(',')[-1]
-    print(image_data)
+    image = await preprocessor.base64_to_img(path)
+    image = await preprocessor.resize_image(image)
 
     # Send the image to the Gemini API
     response = await interprit_image(client, image_data, text)
